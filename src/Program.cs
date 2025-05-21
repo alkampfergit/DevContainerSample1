@@ -22,6 +22,7 @@ namespace DevContainerSample1
             // Create a sample person
             var person = new Models.Person
             {
+                Id = Guid.NewGuid().ToString(),
                 Name = "Alice Smith",
                 Email = "alice@example.com"
             };
@@ -43,6 +44,8 @@ namespace DevContainerSample1
             }
 
             // Retrieve from Elasticsearch
+            //need to refresh the index
+            await esService.RefreshIndexAsync();
             var esPeople = await esService.GetPeopleAsync();
             Console.WriteLine("People in Elasticsearch:");
             foreach (var p in esPeople)

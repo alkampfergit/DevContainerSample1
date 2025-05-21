@@ -27,5 +27,15 @@ namespace DevContainerSample1.Data
             var searchResponse = await _client.SearchAsync<Person>(s => s.MatchAll());
             return searchResponse.Documents as List<Person> ?? new List<Person>(searchResponse.Documents);
         }
+
+        public async Task RefreshIndexAsync()
+        {
+            var refreshResponse = await _client.Indices.RefreshAsync(_indexName);
+            if (!refreshResponse.IsValid)
+            {
+                throw new Exception($"Failed to refresh index: {refreshResponse.ServerError}");
+            }
+            Console.WriteLine("Index refreshed successfully.");
+        }
     }
 }

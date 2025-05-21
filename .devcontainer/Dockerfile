@@ -1,5 +1,5 @@
-# Use the official .NET 6 SDK image (C# 9 is supported in .NET 5+, but .NET 6 is LTS)
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+# Use the official .NET 9 SDK image
+FROM mcr.microsoft.com/dotnet/sdk:9.0-preview
 
 # Install any additional dependencies if needed
 RUN apt-get update && apt-get install -y \

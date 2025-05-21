@@ -14,7 +14,8 @@
         "ms-dotnettools.csharp",
         "mongodb.mongodb-vscode",
         "ms-azuretools.vscode-docker",
-        "cweijan.vscode-es-client2"
+        "cweijan.vscode-es-client2",
+        "ms-dotnettools.csdevkit"
       ]
     }
   },
