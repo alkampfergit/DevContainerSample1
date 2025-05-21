@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  app:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    container_name: devcontainer_app
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    depends_on:
+      - mongodb
+      - elasticsearch
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5000:5000
+      - 5001:5001
+    networks:
+      - devnet
+  mongodb:
+    image: mongo:6.0
+    container_name: devcontainer_mongodb
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    networks:
+      - devnet
+    volumes:
+      - mongodb_data:/data/db
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.18
+    container_name: devcontainer_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - devnet
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+networks:
+  devnet:
+    driver: bridge
+volumes:
+  mongodb_data:
+  elasticsearch_data:

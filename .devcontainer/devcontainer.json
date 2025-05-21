@@ -1,0 +1,19 @@
+{
+  "name": "C# 9 + MongoDB + Elasticsearch DevContainer",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-dotnettools.csharp",
+    "mongodb.mongodb-vscode",
+    "ms-azuretools.vscode-docker"
+  ],
+  "postCreateCommand": "dotnet restore",
+  "forwardPorts": [5000, 5001, 27017, 9200],
+  "remoteUser": "vscode"
+}
