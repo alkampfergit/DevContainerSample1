@@ -5,14 +5,19 @@
   ],
   "service": "app",
   "workspaceFolder": "/workspace",
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "mongodb.mongodb-vscode",
+        "ms-azuretools.vscode-docker",
+        "cweijan.vscode-es-client2"
+      ]
+    }
   },
-  "extensions": [
-    "ms-dotnettools.csharp",
-    "mongodb.mongodb-vscode",
-    "ms-azuretools.vscode-docker"
-  ],
   "postCreateCommand": "dotnet restore",
   "forwardPorts": [5000, 5001, 27017, 9200],
   "remoteUser": "vscode"

@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   app:
-    image: mcr.microsoft.com/dotnet/sdk:6.0
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
     container_name: devcontainer_app
     volumes:
       - ..:/workspace:cached
